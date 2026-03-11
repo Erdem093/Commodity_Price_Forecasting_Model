@@ -322,14 +322,34 @@ tr.is-best td:first-child { color: var(--brand); font-weight: 800; }
 .tour-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(6, 14, 24, 0.56);
+  background: transparent;
   z-index: 80;
+  pointer-events: none;
+}
+.tour-mask {
+  position: fixed;
+  background: rgba(8, 16, 26, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.tour-mask--top {
+  background: linear-gradient(to top, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%);
+}
+.tour-mask--left {
+  background: linear-gradient(to left, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%);
+}
+.tour-mask--right {
+  background: linear-gradient(to right, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%);
+}
+.tour-mask--bottom {
+  background: linear-gradient(to bottom, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%);
 }
 .tour-hole {
   position: fixed;
-  border: 2px solid #fff;
+  border: 3px solid #ffffff;
   border-radius: 14px;
-  box-shadow: 0 0 0 9999px rgba(6, 14, 24, 0.56);
+  box-shadow: 0 8px 24px rgba(12, 24, 38, 0.28);
   transition: all 260ms ease;
   pointer-events: none;
 }
@@ -344,6 +364,7 @@ tr.is-best td:first-child { color: var(--brand); font-weight: 800; }
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.34);
+  pointer-events: auto;
 }
 .tour-step {
   margin: 0;

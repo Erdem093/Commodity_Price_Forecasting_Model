@@ -321,6 +321,35 @@ function placeTourHole(target) {
   hole.style.top = `${top}px`;
   hole.style.width = `${width}px`;
   hole.style.height = `${height}px`;
+
+  const topMask = document.getElementById("tourMaskTop");
+  const leftMask = document.getElementById("tourMaskLeft");
+  const rightMask = document.getElementById("tourMaskRight");
+  const bottomMask = document.getElementById("tourMaskBottom");
+  if (!topMask || !leftMask || !rightMask || !bottomMask) return;
+
+  const viewportW = window.innerWidth;
+  const viewportH = window.innerHeight;
+
+  topMask.style.left = "0px";
+  topMask.style.top = "0px";
+  topMask.style.width = `${viewportW}px`;
+  topMask.style.height = `${Math.max(0, top)}px`;
+
+  leftMask.style.left = "0px";
+  leftMask.style.top = "0px";
+  leftMask.style.width = `${Math.max(0, left)}px`;
+  leftMask.style.height = `${viewportH}px`;
+
+  rightMask.style.left = `${Math.min(viewportW, left + width)}px`;
+  rightMask.style.top = "0px";
+  rightMask.style.width = `${Math.max(0, viewportW - (left + width))}px`;
+  rightMask.style.height = `${viewportH}px`;
+
+  bottomMask.style.left = "0px";
+  bottomMask.style.top = `${Math.min(viewportH, top + height)}px`;
+  bottomMask.style.width = `${viewportW}px`;
+  bottomMask.style.height = `${Math.max(0, viewportH - (top + height))}px`;
 }
 
 function positionTourStep(shouldScroll = true) {

@@ -2,6 +2,10 @@
 
 End-to-end WTI next-day direction forecasting pipeline using weather + yfinance data.
 
+## Live Demo
+
+Frontend is live at: **https://commoditypriceforecasting.vercel.app**
+
 ## Quickstart
 
 ```bash
