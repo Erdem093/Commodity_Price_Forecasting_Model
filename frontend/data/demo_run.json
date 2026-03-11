@@ -1,0 +1,38 @@
+{
+  "run_id": "run_demo_001",
+  "summary": {
+    "best_model": "lightgbm",
+    "auc": 0.61,
+    "balanced_accuracy": 0.57,
+    "information_ratio": 0.73,
+    "cagr": 0.124,
+    "sharpe": 1.08,
+    "max_drawdown": -0.091,
+    "exposure": 0.43
+  },
+  "model_comparison": [
+    {"model_name": "logistic_regression", "auc": 0.54, "balanced_accuracy": 0.52, "information_ratio": 0.31, "sharpe": 0.44},
+    {"model_name": "random_forest", "auc": 0.57, "balanced_accuracy": 0.55, "information_ratio": 0.48, "sharpe": 0.71},
+    {"model_name": "lightgbm", "auc": 0.61, "balanced_accuracy": 0.57, "information_ratio": 0.73, "sharpe": 1.08}
+  ],
+  "equity_curve": [
+    ["2024-01-02", 1.00], ["2024-01-09", 1.01], ["2024-01-16", 1.03], ["2024-01-23", 1.02],
+    ["2024-01-30", 1.04], ["2024-02-06", 1.05], ["2024-02-13", 1.07], ["2024-02-20", 1.06],
+    ["2024-02-27", 1.08], ["2024-03-05", 1.11], ["2024-03-12", 1.10], ["2024-03-19", 1.13],
+    ["2024-03-26", 1.14], ["2024-04-02", 1.16], ["2024-04-09", 1.15], ["2024-04-16", 1.17]
+  ],
+  "drawdown": [
+    ["2024-01-02", 0.0], ["2024-01-09", 0.0], ["2024-01-16", 0.0], ["2024-01-23", -0.01],
+    ["2024-01-30", 0.0], ["2024-02-06", 0.0], ["2024-02-13", 0.0], ["2024-02-20", -0.01],
+    ["2024-02-27", 0.0], ["2024-03-05", 0.0], ["2024-03-12", -0.01], ["2024-03-19", 0.0],
+    ["2024-03-26", 0.0], ["2024-04-02", 0.0], ["2024-04-09", -0.01], ["2024-04-16", 0.0]
+  ],
+  "feature_importance": [
+    ["ret_lag_1", 0.18], ["vol_10", 0.14], ["mom_ma_5", 0.12], ["hdd_us_l1", 0.11],
+    ["temp_anom_us_l1", 0.10], ["close_^VIX", 0.09], ["close_DX-Y.NYB", 0.08], ["cdd_delta_1d", 0.07]
+  ],
+  "failure_periods": [
+    {"window": "2024-02-14 to 2024-02-22", "note": "Whipsaw around inventory surprise and risk-off rotation."},
+    {"window": "2024-04-03 to 2024-04-09", "note": "Macro headline shock broke lag-based momentum signal."}
+  ]
+}

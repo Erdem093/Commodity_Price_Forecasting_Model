@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: commodity-price-forecasting
+Version: 0.1.0
+Summary: WTI next-day direction forecasting pipeline with weather + yfinance
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: polars==1.33.0
+Requires-Dist: numpy==2.0.2
+Requires-Dist: pandas==2.2.3
+Requires-Dist: pyarrow==17.0.0
+Requires-Dist: scikit-learn==1.5.2
+Requires-Dist: lightgbm==4.6.0
+Requires-Dist: yfinance==0.2.54
+Requires-Dist: requests==2.32.3
+Requires-Dist: pyyaml==6.0.2
+Requires-Dist: matplotlib==3.9.4
+Requires-Dist: shap==0.46.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+
+# Commodity Price Forecasting Model
+
+End-to-end WTI next-day direction forecasting pipeline using weather + yfinance data.
+
+## Quickstart
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .[dev]
+
+pipeline ingest --start 2021-01-01 --end 2024-12-31
+pipeline train --asof 2024-12-31
+pipeline backtest --start 2023-01-01 --end 2024-12-31
+pipeline report --run-id <run_id>
+```
+
+All outputs are written under `artifacts/<run_id>/`.

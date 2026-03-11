@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erdem | Commodity Forecasting Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow--amber"></div>
+  <div class="glow glow--teal"></div>
+
+  <header class="topbar shell">
+    <a class="brand" href="#top">Erdem Quant Systems</a>
+    <nav class="topnav">
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#live-demo">Live Demo</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell reveal">
+      <div class="hero__content">
+        <p class="eyebrow">Portfolio Project | Commodity Analytics</p>
+        <h1>WTI Forecasting Engine for <span>Commercial Decisions</span></h1>
+        <p class="subtitle">
+          A production-style ML pipeline forecasting next-day WTI direction using market and weather drivers,
+          evaluated with cost-aware walk-forward backtests.
+        </p>
+        <div class="cta-row">
+          <button id="runDemoHero" class="btn btn--primary">Run Live Demo</button>
+          <label class="btn btn--secondary" for="jsonUpload">Upload Data</label>
+          <input id="jsonUpload" type="file" accept="application/json" hidden />
+        </div>
+        <p id="runMeta" class="status-line">Ready to run demo</p>
+      </div>
+      <aside class="hero__panel card">
+        <p class="kicker">Why it matters</p>
+        <h3>Predictive signal + execution realism</h3>
+        <p>
+          Model selection is based on out-of-sample information ratio, not just classification accuracy.
+          Backtests include costs, turnover, and drawdown.
+        </p>
+        <div class="badges">
+          <span>No Leakage</span>
+          <span>Walk Forward</span>
+          <span>SHAP Explainability</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="method" class="section shell reveal">
+      <div class="section__head">
+        <p class="eyebrow">Method</p>
+        <h2>Value → Method → Results</h2>
+      </div>
+      <div class="method-grid">
+        <article class="method-card">
+          <h3>Data Intake</h3>
+          <p>WTI + macro context from yfinance, weather demand proxies, and aligned daily features.</p>
+        </article>
+        <article class="method-card">
+          <h3>Model Stack</h3>
+          <p>Logistic Regression, Random Forest, and LightGBM on identical walk-forward folds.</p>
+        </article>
+        <article class="method-card">
+          <h3>Decision Logic</h3>
+          <p>Thresholded long/flat policy using model probability to manage participation and turnover.</p>
+        </article>
+        <article class="method-card">
+          <h3>Commercial Eval</h3>
+          <p>Net returns, Sharpe, max drawdown, exposure, and information ratio to benchmark utility.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="results" class="section shell reveal">
+      <div class="section__head">
+        <p class="eyebrow">Results Snapshot</p>
+        <h2>Performance framed for decision-makers</h2>
+      </div>
+      <div id="headlineMetrics" class="headline-grid"></div>
+    </section>
+
+    <section id="live-demo" class="section shell reveal">
+      <div class="section__head section__head--demo">
+        <div>
+          <p class="eyebrow">Live Demo</p>
+          <h2>Interactive Forecasting Dashboard</h2>
+        </div>
+        <div class="demo-actions">
+          <button id="runDemoInline" class="btn btn--primary">Run Demo</button>
+          <button id="replayTourBtn" class="btn btn--secondary">Replay Tour</button>
+        </div>
+      </div>
+
+      <section class="kpi-grid" id="kpis" data-tour="kpis"></section>
+
+      <section class="panel" data-tour="table">
+        <div class="panel__head">
+          <h3>Model Comparison</h3>
+          <p>Primary selection metric: information ratio</p>
+        </div>
+        <div class="table-wrap">
+          <table id="modelTable">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>AUC</th>
+                <th>Bal Acc</th>
+                <th>Info Ratio</th>
+                <th>Sharpe</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="chart-grid">
+        <article class="panel" data-tour="equity">
+          <div class="panel__head"><h3>Equity Curve</h3><p>Net of transaction costs</p></div>
+          <svg id="equityChart" class="chart" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        </article>
+        <article class="panel" data-tour="drawdown">
+          <div class="panel__head"><h3>Drawdown</h3><p>Peak-to-trough stress</p></div>
+          <svg id="drawdownChart" class="chart" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        </article>
+      </section>
+
+      <section class="chart-grid">
+        <article class="panel" data-tour="shap">
+          <div class="panel__head"><h3>Top Drivers (SHAP)</h3><p>Why the model moved</p></div>
+          <svg id="featureChart" class="chart" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid meet"></svg>
+        </article>
+        <article class="panel" data-tour="failures">
+          <div class="panel__head"><h3>Failure Windows</h3><p>Interpretation of weak regimes</p></div>
+          <ul id="failures" class="failure-list"></ul>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <div id="tourOverlay" class="tour-overlay" hidden>
+    <div id="tourHole" class="tour-hole"></div>
+    <aside class="tour-card" id="tourCard">
+      <p class="tour-step" id="tourStep">Step 1 / 6</p>
+      <h4 id="tourTitle">Title</h4>
+      <p id="tourBody">Body</p>
+      <div class="tour-actions">
+        <button id="tourBack" class="btn btn--secondary">Back</button>
+        <button id="tourNext" class="btn btn--primary">Next</button>
+        <button id="tourSkip" class="btn btn--text">Skip</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

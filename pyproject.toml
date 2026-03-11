@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "commodity-price-forecasting"
+version = "0.1.0"
+description = "WTI next-day direction forecasting pipeline with weather + yfinance"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "polars==1.33.0",
+  "numpy==2.0.2",
+  "pandas==2.2.3",
+  "pyarrow==17.0.0",
+  "scikit-learn==1.5.2",
+  "lightgbm==4.6.0",
+  "yfinance==0.2.54",
+  "requests==2.32.3",
+  "pyyaml==6.0.2",
+  "matplotlib==3.9.4",
+  "shap==0.46.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+]
+
+[project.scripts]
+pipeline = "commodity_forecasting.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"

@@ -1,0 +1,2 @@
+[console_scripts]
+pipeline = commodity_forecasting.cli:main
