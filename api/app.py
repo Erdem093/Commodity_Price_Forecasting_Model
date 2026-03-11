@@ -10,11 +10,14 @@ from flask import Flask, jsonify, request
 
 from backend.run_store import RunStore
 from backend.runner import run_demo_quick
-from commodity_forecasting.utils import make_run_id
 
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def _make_run_id(prefix: str = "live") -> str:
+    return f"{prefix}_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
 
 
 def create_app(start_worker: bool = True) -> Flask:
@@ -81,7 +84,7 @@ def create_app(start_worker: bool = True) -> Flask:
     def create_run() -> Any:
         payload = request.get_json(silent=True) or {}
         mode = payload.get("mode", "demo_quick")
-        run_id = f"{make_run_id('live')}_{uuid4().hex[:6]}"
+        run_id = f"{_make_run_id('live')}_{uuid4().hex[:6]}"
         store.create_run(run_id=run_id, mode=mode, created_at=_now_iso())
         job_queue.put((run_id, mode))
         return jsonify({"run_id": run_id})

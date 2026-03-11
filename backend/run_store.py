@@ -8,7 +8,7 @@ from typing import Any
 
 
 class RunStore:
-    def __init__(self, db_path: str | Path = "artifacts/run_store.sqlite") -> None:
+    def __init__(self, db_path: str | Path = "/tmp/run_store.sqlite") -> None:
         self.db_path = Path(db_path)
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
