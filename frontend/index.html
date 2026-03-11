@@ -16,11 +16,6 @@
 
   <header class="topbar shell">
     <a class="brand" href="#top">Erdem Quant Systems</a>
-    <nav class="topnav">
-      <a href="#method">Method</a>
-      <a href="#results">Results</a>
-      <a href="#live-demo">Live Demo</a>
-    </nav>
   </header>
 
   <main id="top">
@@ -32,13 +27,37 @@
           A production-style ML pipeline forecasting next-day WTI direction using market and weather drivers,
           evaluated with cost-aware walk-forward backtests.
         </p>
+
+        <section id="whatBuiltStrip" class="built-strip" aria-label="What I Built">
+          <div class="built-strip__item">
+            <span>01</span>
+            <p>Live API orchestration with stage-by-stage run trace and status polling.</p>
+          </div>
+          <div class="built-strip__item">
+            <span>02</span>
+            <p>ML forecasting pipeline for short-term WTI direction with model comparison logic.</p>
+          </div>
+          <div class="built-strip__item">
+            <span>03</span>
+            <p>Commercial backtesting framework using cost-aware evaluation and risk metrics.</p>
+          </div>
+        </section>
+
         <div class="cta-row">
           <button id="runDemoHero" class="btn btn--primary">Run Live Computation</button>
           <label class="btn btn--secondary" for="jsonUpload">Upload Precomputed Run</label>
           <input id="jsonUpload" type="file" accept="application/json" hidden />
         </div>
+
+        <div id="heroLinks" class="hero-link-row" aria-label="Recruiter Links">
+          <a class="btn btn--link" href="https://github.com/Erdem093/Commodity_Price_Forecasting_Model" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn--link" href="#live-demo">Live Demo</a>
+          <a class="btn btn--link" href="https://www.linkedin.com" target="_blank" rel="noreferrer">Resume</a>
+        </div>
+
         <p id="runMeta" class="status-line">Ready to run live computation</p>
       </div>
+
       <aside class="hero__panel card">
         <p class="kicker">Why it matters</p>
         <h3>Predictive signal + execution realism</h3>
@@ -46,12 +65,68 @@
           Model selection is based on out-of-sample information ratio, not just classification accuracy.
           Backtests include costs, turnover, drawdown, and provenance evidence.
         </p>
+
+        <div id="techStackRow" class="tech-stack-row" aria-label="Tech Stack">
+          <span>Python</span>
+          <span>Flask API</span>
+          <span>Vercel</span>
+          <span>Walk-Forward Validation</span>
+          <span>SHAP</span>
+        </div>
+
         <div class="badges" id="liveBadges">
           <span id="badgeMode">Awaiting run</span>
           <span id="badgeRunId">Run ID: -</span>
           <span id="badgeRuntime">Runtime: -</span>
         </div>
       </aside>
+    </section>
+
+    <section id="impact" class="section shell reveal">
+      <div class="section__head">
+        <p class="eyebrow">Business Impact</p>
+        <h2>Decision quality, not just model accuracy</h2>
+      </div>
+      <article id="impactCard" class="impact-card">
+        <ul>
+          <li>Model choice is based on information ratio and risk-adjusted outcomes, not headline hit-rate alone.</li>
+          <li>Run trace and provenance make each output auditable, improving trust in decision-support usage.</li>
+          <li>Cost-aware backtesting exposes realistic performance expectations before deployment.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="architecture" class="section shell reveal">
+      <div class="section__head">
+        <p class="eyebrow">Architecture</p>
+        <h2>Execution path from click to evidence</h2>
+      </div>
+      <div id="architectureDiagram" class="arch-diagram" aria-label="Architecture Mini Diagram">
+        <article class="arch-node">
+          <h3>Frontend</h3>
+          <p>Trigger run + display trace</p>
+        </article>
+        <div class="arch-arrow" aria-hidden="true">-></div>
+        <article class="arch-node">
+          <h3>API</h3>
+          <p>Create run + status endpoints</p>
+        </article>
+        <div class="arch-arrow" aria-hidden="true">-></div>
+        <article class="arch-node">
+          <h3>Queue / Runner</h3>
+          <p>Execute demo computation stages</p>
+        </article>
+        <div class="arch-arrow" aria-hidden="true">-></div>
+        <article class="arch-node">
+          <h3>Artifacts</h3>
+          <p>Trace, provenance, outputs</p>
+        </article>
+        <div class="arch-arrow" aria-hidden="true">-></div>
+        <article class="arch-node">
+          <h3>Dashboard</h3>
+          <p>Render metrics + charts + tour</p>
+        </article>
+      </div>
     </section>
 
     <section id="method" class="section shell reveal">
@@ -168,6 +243,31 @@
           <ul id="failures" class="failure-list"></ul>
         </article>
       </section>
+    </section>
+
+    <section id="limitations" class="section shell reveal">
+      <div class="section__head">
+        <p class="eyebrow">Limitations & Next Steps</p>
+        <h2>Maturity and roadmap</h2>
+      </div>
+      <div class="limits-grid">
+        <article class="limit-card">
+          <h3>Current Limitations</h3>
+          <ul>
+            <li>Demo mode uses a reduced data window to stay responsive in browser sessions.</li>
+            <li>Serverless runtime constraints limit full in-function model training complexity.</li>
+            <li>Phase-1 data scope does not yet include full inventory and shipping connectors.</li>
+          </ul>
+        </article>
+        <article class="limit-card">
+          <h3>Next Steps</h3>
+          <ul>
+            <li>Move to dedicated async queue and worker infra for robust production-grade execution.</li>
+            <li>Integrate additional fundamental data sources (EIA + shipping) for broader signal coverage.</li>
+            <li>Add production monitoring for drift, model decay, and run-level alerting.</li>
+          </ul>
+        </article>
+      </div>
     </section>
   </main>
 

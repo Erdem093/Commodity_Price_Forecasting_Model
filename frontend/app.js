@@ -598,6 +598,14 @@ function wireEvents() {
   if (tourNext) tourNext.addEventListener("click", nextTourStep);
   if (tourSkip) tourSkip.addEventListener("click", stopTour);
 
+  const liveLink = document.querySelector('#heroLinks a[href="#live-demo"]');
+  if (liveLink) {
+    liveLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollToDemo();
+    });
+  }
+
   window.addEventListener("resize", () => {
     if (tourState.active) positionTourStep(false);
   });
