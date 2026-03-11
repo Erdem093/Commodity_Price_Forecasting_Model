@@ -14,42 +14,38 @@
   <div class="glow glow--amber"></div>
   <div class="glow glow--teal"></div>
 
-  <header class="topbar shell">
-    <a class="brand" href="#top">Erdem Quant Systems</a>
-  </header>
-
   <main id="top">
     <section class="hero shell reveal">
-      <div class="hero__content">
+      <div class="hero__lead">
         <p class="eyebrow">Portfolio Project | Commodity Analytics</p>
         <h1>WTI Forecasting Engine for <span>Commercial Decisions</span></h1>
-        <p class="subtitle">
-          A production-style ML pipeline forecasting next-day WTI direction using market and weather drivers,
-          evaluated with cost-aware walk-forward backtests.
-        </p>
+      </div>
 
-        <section id="whatBuiltStrip" class="built-strip" aria-label="What I Built">
-          <div class="built-strip__item">
-            <span>01</span>
-            <p>Live API orchestration with stage-by-stage run trace and status polling.</p>
-          </div>
-          <div class="built-strip__item">
-            <span>02</span>
-            <p>ML forecasting pipeline for short-term WTI direction with model comparison logic.</p>
-          </div>
-          <div class="built-strip__item">
-            <span>03</span>
-            <p>Commercial backtesting framework using cost-aware evaluation and risk metrics.</p>
-          </div>
-        </section>
+      <p class="subtitle hero__subtitle">
+        A production grade ML pipeline forecasting WTI direction for the next trading day using market and weather drivers,
+        evaluated with cost conscious walk forward backtests.
+      </p>
 
-        <div class="cta-row">
+      <section id="whatBuiltStrip" class="built-strip" aria-label="What I Built">
+        <div class="built-strip__item">
+          <span>01</span>
+          <p>Live API orchestration with stage by stage run trace and status polling.</p>
+        </div>
+        <div class="built-strip__item">
+          <span>02</span>
+          <p>ML forecasting pipeline for short horizon WTI direction with model comparison logic.</p>
+        </div>
+        <div class="built-strip__item">
+          <span>03</span>
+          <p>Commercial backtesting framework using cost conscious evaluation and risk metrics.</p>
+        </div>
+      </section>
+
+      <div class="hero__actions">
+        <div class="cta-row cta-row--all">
           <button id="runDemoHero" class="btn btn--primary">Run Live Computation</button>
           <label class="btn btn--secondary" for="jsonUpload">Upload Precomputed Run</label>
           <input id="jsonUpload" type="file" accept="application/json" hidden />
-        </div>
-
-        <div id="heroLinks" class="hero-link-row" aria-label="Recruiter Links">
           <a class="btn btn--link" href="https://github.com/Erdem093/Commodity_Price_Forecasting_Model" target="_blank" rel="noreferrer">GitHub</a>
           <a class="btn btn--link" href="https://www.linkedin.com/in/erdem-arslan-b61a992a7/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
@@ -61,7 +57,7 @@
         <p class="kicker">Why it matters</p>
         <h3>Predictive signal + execution realism</h3>
         <p>
-          Model selection is based on out-of-sample information ratio, not just classification accuracy.
+          Model selection is based on validation period information ratio, not just classification accuracy.
           Backtests include costs, turnover, drawdown, and provenance evidence.
         </p>
 
@@ -69,14 +65,14 @@
           <span>Python</span>
           <span>Flask API</span>
           <span>Vercel</span>
-          <span>Walk-Forward Validation</span>
+          <span>Walk Forward Validation</span>
           <span>SHAP</span>
         </div>
 
         <div class="badges" id="liveBadges">
           <span id="badgeMode">Awaiting run</span>
-          <span id="badgeRunId">Run ID: -</span>
-          <span id="badgeRuntime">Runtime: -</span>
+          <span id="badgeRunId">Run ID: pending</span>
+          <span id="badgeRuntime">Runtime: pending</span>
         </div>
       </aside>
     </section>
@@ -271,10 +267,6 @@
   </main>
 
   <div id="tourOverlay" class="tour-overlay" hidden>
-    <div id="tourMaskTop" class="tour-mask tour-mask--top"></div>
-    <div id="tourMaskLeft" class="tour-mask tour-mask--left"></div>
-    <div id="tourMaskRight" class="tour-mask tour-mask--right"></div>
-    <div id="tourMaskBottom" class="tour-mask tour-mask--bottom"></div>
     <div id="tourHole" class="tour-hole"></div>
     <aside class="tour-card" id="tourCard">
       <p class="tour-step" id="tourStep">Step 1 / 8</p>
