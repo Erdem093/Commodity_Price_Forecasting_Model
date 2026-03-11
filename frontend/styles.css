@@ -75,6 +75,7 @@ body {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 22px;
+  align-items: start;
 }
 .eyebrow {
   margin: 0 0 10px;
@@ -164,6 +165,9 @@ h1 span { color: var(--brand); }
 .hero__panel p {
   margin: 10px 0 0;
   color: var(--muted);
+}
+.hero__panel {
+  height: fit-content;
 }
 .badges {
   margin-top: 16px;
@@ -412,15 +416,17 @@ tr.is-best td:first-child { color: var(--brand); font-weight: 800; }
 }
 .tour-mask {
   position: fixed;
-  background: rgba(8, 16, 26, 0.2);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(14, 28, 45, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   pointer-events: none;
 }
-.tour-mask--top { background: linear-gradient(to top, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%); }
-.tour-mask--left { background: linear-gradient(to left, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%); }
-.tour-mask--right { background: linear-gradient(to right, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%); }
-.tour-mask--bottom { background: linear-gradient(to bottom, rgba(18, 58, 106, 0.06) 0%, rgba(18, 58, 106, 0.4) 100%); }
+.tour-mask--top,
+.tour-mask--left,
+.tour-mask--right,
+.tour-mask--bottom {
+  background: rgba(14, 28, 45, 0.16);
+}
 .tour-hole {
   position: fixed;
   border: 3px solid #ffffff;
