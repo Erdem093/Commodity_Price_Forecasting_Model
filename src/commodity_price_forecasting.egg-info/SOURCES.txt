@@ -18,6 +18,7 @@ src/commodity_price_forecasting.egg-info/dependency_links.txt
 src/commodity_price_forecasting.egg-info/entry_points.txt
 src/commodity_price_forecasting.egg-info/requires.txt
 src/commodity_price_forecasting.egg-info/top_level.txt
+tests/test_api_runs.py
 tests/test_data_integrity.py
 tests/test_determinism.py
 tests/test_feature_leakage.py

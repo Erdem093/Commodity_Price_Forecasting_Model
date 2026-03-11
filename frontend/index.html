@@ -33,23 +33,23 @@
           evaluated with cost-aware walk-forward backtests.
         </p>
         <div class="cta-row">
-          <button id="runDemoHero" class="btn btn--primary">Run Live Demo</button>
-          <label class="btn btn--secondary" for="jsonUpload">Upload Data</label>
+          <button id="runDemoHero" class="btn btn--primary">Run Live Computation</button>
+          <label class="btn btn--secondary" for="jsonUpload">Upload Precomputed Run</label>
           <input id="jsonUpload" type="file" accept="application/json" hidden />
         </div>
-        <p id="runMeta" class="status-line">Ready to run demo</p>
+        <p id="runMeta" class="status-line">Ready to run live computation</p>
       </div>
       <aside class="hero__panel card">
         <p class="kicker">Why it matters</p>
         <h3>Predictive signal + execution realism</h3>
         <p>
           Model selection is based on out-of-sample information ratio, not just classification accuracy.
-          Backtests include costs, turnover, and drawdown.
+          Backtests include costs, turnover, drawdown, and provenance evidence.
         </p>
-        <div class="badges">
-          <span>No Leakage</span>
-          <span>Walk Forward</span>
-          <span>SHAP Explainability</span>
+        <div class="badges" id="liveBadges">
+          <span id="badgeMode">Awaiting run</span>
+          <span id="badgeRunId">Run ID: -</span>
+          <span id="badgeRuntime">Runtime: -</span>
         </div>
       </aside>
     </section>
@@ -57,7 +57,7 @@
     <section id="method" class="section shell reveal">
       <div class="section__head">
         <p class="eyebrow">Method</p>
-        <h2>Value → Method → Results</h2>
+        <h2>Value -> Method -> Results</h2>
       </div>
       <div class="method-grid">
         <article class="method-card">
@@ -94,10 +94,35 @@
           <h2>Interactive Forecasting Dashboard</h2>
         </div>
         <div class="demo-actions">
-          <button id="runDemoInline" class="btn btn--primary">Run Demo</button>
+          <button id="runDemoInline" class="btn btn--primary">Run Live Computation</button>
+          <button id="retryRunBtn" class="btn btn--secondary">Retry Failed Run</button>
           <button id="replayTourBtn" class="btn btn--secondary">Replay Tour</button>
         </div>
       </div>
+
+      <section class="trace-grid">
+        <article class="panel trace-panel" data-tour="trace">
+          <div class="panel__head">
+            <h3>Run Trace</h3>
+            <p id="traceStage">Stage: idle</p>
+          </div>
+          <div class="trace-progress-wrap">
+            <div id="traceProgressBar" class="trace-progress-bar"></div>
+          </div>
+          <p id="traceProgressLabel" class="mono">0%</p>
+          <ul id="traceList" class="trace-list"></ul>
+          <p id="traceError" class="trace-error" hidden></p>
+        </article>
+
+        <article class="panel provenance-panel" data-tour="provenance">
+          <div class="panel__head">
+            <h3>Data Provenance</h3>
+            <p>Proof of computed outputs</p>
+          </div>
+          <div id="provenanceMeta" class="provenance-meta"></div>
+          <ul id="artifactList" class="artifact-list"></ul>
+        </article>
+      </section>
 
       <section class="kpi-grid" id="kpis" data-tour="kpis"></section>
 
@@ -153,7 +178,7 @@
     <div id="tourMaskBottom" class="tour-mask tour-mask--bottom"></div>
     <div id="tourHole" class="tour-hole"></div>
     <aside class="tour-card" id="tourCard">
-      <p class="tour-step" id="tourStep">Step 1 / 6</p>
+      <p class="tour-step" id="tourStep">Step 1 / 8</p>
       <h4 id="tourTitle">Title</h4>
       <p id="tourBody">Body</p>
       <div class="tour-actions">
